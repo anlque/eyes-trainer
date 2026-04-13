@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 
 import { useAnimationFrame } from '@/hooks/useAnimationFrame';
-import { easeInOutSine, pingPong01 } from '@/exercises/motion';
+import { easeInOutSine, pingPong } from '@/exercises/motion';
 
 type Props = {
   isRunning: boolean;
@@ -20,7 +20,7 @@ export function FocusDot(props: Props) {
     const el = dotRef.current;
     if (!el) return;
 
-    const u = easeInOutSine(pingPong01(phase));
+    const u = easeInOutSine(pingPong(phase));
     const minScale = 0.65;
     const maxScale = 1.55;
     const s = minScale + (maxScale - minScale) * u;
