@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { clamp } from '@/exercises/motion';
 
 type TimerStatus = 'idle' | 'running' | 'paused' | 'finished';
 
@@ -19,9 +20,6 @@ type UseTimerApi = {
   reset: () => void;
 };
 
-function clamp01(value: number) {
-  return Math.min(1, Math.max(0, value));
-}
 
 export function useTimer(params: UseTimerParams): UseTimerApi {
   const { durationMs, tickMs = 100 } = params;
@@ -117,7 +115,7 @@ export function useTimer(params: UseTimerParams): UseTimerApi {
   const remainingMs = Math.max(0, durationMs - clampedElapsedMs);
   const progress = useMemo(() => {
     if (durationMs <= 0) return 0;
-    return clamp01(clampedElapsedMs / durationMs);
+    return clamp(clampedElapsedMs / durationMs);
   }, [clampedElapsedMs, durationMs]);
 
   return {

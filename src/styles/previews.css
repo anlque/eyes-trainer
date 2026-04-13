@@ -1,0 +1,201 @@
+.preview {
+  position: relative;
+  width: 100%;
+  height: 124px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in oklab, var(--border) 55%, transparent);
+  background: color-mix(in oklab, var(--bg) 88%, black 12%);
+  overflow: hidden;
+}
+
+.previewDot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--accent-strong) 92%, white 8%);
+  box-shadow:
+    0 0 0 5px rgba(var(--accent-rgb), 0.07),
+    0 0 14px rgba(var(--accent-rgb), 0.45);
+  transform: translate3d(-24px, 0, 0);
+  animation-duration: 2.4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: paused;
+  will-change: transform;
+}
+
+.preview[data-active='true'] .previewDot,
+.preview[data-active='true'] .previewRing,
+.preview[data-active='true'] .previewOverlay,
+.preview[data-active='true'] .previewDotFocus {
+  animation-play-state: running;
+}
+
+.preview[data-variant='dot-left-right'] .previewDot {
+  animation-name: previewLineX;
+}
+
+.preview[data-variant='dot-up-down'] .previewDot {
+  animation-name: previewLineY;
+}
+
+.preview[data-variant='dot-circle'] .previewDot {
+  animation-name: previewCircle;
+  animation-duration: 3.2s;
+  animation-direction: normal;
+  animation-timing-function: linear;
+}
+
+.preview[data-variant='figure-eight'] .previewDot {
+  animation-name: previewFigureEight;
+  animation-duration: 4s;
+  animation-direction: normal;
+  animation-timing-function: linear;
+}
+
+.preview[data-variant='random-smooth'] .previewDot {
+  animation-name: previewRandomSmooth;
+  animation-duration: 5s;
+  animation-direction: normal;
+  animation-timing-function: linear;
+}
+
+.previewDotFocus {
+  transform: translate3d(0, 0, 0) scale(0.75);
+  animation-name: previewFocus;
+  animation-duration: 2.2s;
+  animation-direction: alternate;
+}
+
+.previewRing {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 2px solid rgba(var(--accent-rgb), 0.55);
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.16);
+  transform: translate3d(-50%, -50%, 0) scale(0.35);
+  opacity: 0.35;
+  animation-name: previewRing;
+  animation-duration: 2.7s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  will-change: transform, opacity;
+}
+
+.previewOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(
+    220px 90px at 50% 50%,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.04) 55%,
+    transparent 82%
+  );
+  opacity: 0;
+  animation-name: previewDot;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-play-state: paused;
+}
+
+@keyframes previewLineX {
+  from {
+    transform: translate3d(-26px, 0, 0);
+  }
+  to {
+    transform: translate3d(26px, 0, 0);
+  }
+}
+
+@keyframes previewLineY {
+  from {
+    transform: translate3d(0, -18px, 0);
+  }
+  to {
+    transform: translate3d(0, 18px, 0);
+  }
+}
+
+@keyframes previewCircle {
+  from {
+    transform: translate3d(22px, 0, 0);
+  }
+  25% {
+    transform: translate3d(0, 18px, 0);
+  }
+  50% {
+    transform: translate3d(-22px, 0, 0);
+  }
+  75% {
+    transform: translate3d(0, -18px, 0);
+  }
+  to {
+    transform: translate3d(22px, 0, 0);
+  }
+}
+
+@keyframes previewFigureEight {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(18px, 10px, 0);
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+  75% {
+    transform: translate3d(-18px, -10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes previewRandomSmooth {
+  0% {
+    transform: translate3d(-22px, 10px, 0);
+  }
+  30% {
+    transform: translate3d(20px, -8px, 0);
+  }
+  60% {
+    transform: translate3d(8px, 14px, 0);
+  }
+  100% {
+    transform: translate3d(-22px, 10px, 0);
+  }
+}
+
+@keyframes previewFocus {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.75);
+  }
+  to {
+    transform: translate3d(0, 0, 0) scale(1.45);
+  }
+}
+
+@keyframes previewRing {
+  from {
+    transform: translate3d(-50%, -50%, 0) scale(0.35);
+    opacity: 0.5;
+  }
+  to {
+    transform: translate3d(-50%, -50%, 0) scale(1.25);
+    opacity: 0.18;
+  }
+}

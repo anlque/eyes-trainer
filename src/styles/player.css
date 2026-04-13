@@ -1,0 +1,125 @@
+.exercisePlayerCard {
+  width: 60%;
+  height: 60vh;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 980px) {
+  .exercisePlayerCard {
+    width: 70%;
+  }
+}
+
+@media (max-width: 640px) {
+  .exercisePlayerCard {
+    width: 99%;
+  }
+}
+
+.stage {
+  width: 100%;
+  height: 65%;
+  border-radius: 14px;
+  border: 1px solid var(--stage-border);
+  background: var(--stage-bg);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.stageBounds {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.stageCenter {
+  display: grid;
+  place-items: center;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--accent-strong) 92%, white 8%);
+  box-shadow:
+    0 0 0 6px rgba(var(--accent-rgb), 0.08),
+    0 0 18px rgba(var(--accent-rgb), 0.5);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  border: 2px solid rgba(var(--accent-rgb), 0.55);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.18);
+  transform: translate3d(-50%, -50%, 0) scale(0.25);
+  opacity: 0.3;
+  will-change: transform, opacity;
+}
+
+.progressTrack {
+  margin-top: 12px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--stage-bg);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--accent-rgb), 0.2),
+    rgba(var(--accent-rgb), 0.82)
+  );
+  border-radius: 999px;
+  transition: width 100ms linear;
+}
+
+.playerTopRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.timeStack {
+  display: grid;
+  gap: 4px;
+}
+
+.timeStackRight {
+  text-align: right;
+}
+
+.timeLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.timeValue {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.statusLine {
+  margin-top: 12px;
+}

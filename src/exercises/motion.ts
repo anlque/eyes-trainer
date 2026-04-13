@@ -1,4 +1,4 @@
-export function clamp01(value: number) {
+export function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
 }
 
@@ -7,16 +7,16 @@ export function lerp(a: number, b: number, t: number) {
 }
 
 export function easeInOutSine(t: number) {
-  const u = clamp01(t);
+  const u = clamp(t);
   return 0.5 - 0.5 * Math.cos(Math.PI * u);
 }
 
-export function pingPong01(phase: number) {
+export function pingPong(phase: number) {
   const cycle = Math.floor(phase);
   const local = phase - cycle;
   return cycle % 2 === 0 ? local : 1 - local;
 }
 
-export function wrap01(phase: number) {
+export function wrap(phase: number) {
   return phase - Math.floor(phase);
 }

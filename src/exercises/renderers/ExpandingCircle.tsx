@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
 
 import { useAnimationFrame } from '@/hooks/useAnimationFrame';
-import { easeInOutSine, pingPong01 } from '@/exercises/motion';
+import { easeInOutSine, pingPong } from '@/exercises/motion';
 
 type Props = {
   isRunning: boolean;
@@ -20,7 +20,7 @@ export function ExpandingCircle(props: Props) {
     const el = ringRef.current;
     if (!el) return;
 
-    const u = easeInOutSine(pingPong01(phase));
+    const u = easeInOutSine(pingPong(phase));
     const scale = 0.25 + 1.15 * u;
     const opacity = 0.15 + 0.45 * (1 - u);
     el.style.transform = `translate3d(-50%, -50%, 0) scale(${scale})`;

@@ -1,0 +1,65 @@
+.appLayout {
+  min-height: 100svh;
+  width: 100%;
+}
+
+.appHeaderBar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  background: color-mix(in oklab, var(--bg) 55%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+}
+
+.appNav {
+  width: 100%;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.appBrand {
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.appNavRight {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.appNavLink {
+  text-decoration: none;
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.appNavLink:hover {
+  color: var(--text);
+  background: color-mix(in oklab, var(--panel) 70%, transparent);
+  border-color: color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+.appNavLink.active {
+  color: var(--text);
+  background: rgba(var(--accent-rgb), 0.12);
+  border-color: rgba(var(--accent-rgb), 0.28);
+}
+
+#root {
+  min-height: 100svh;
+  width: 100%;
+}
